@@ -1,0 +1,26 @@
+<svg:g *ngIf="node && node.isSchema" [id]="node.id" class="node-element" [attr.type]="node.type" [attr.x]="node.x" [attr.y]="node.y"
+  [attr.height]="node.height" [attr.width]="node.width" [class.leaf-node]="node.isLeaf">
+  <svg:rect class="node-element-back" [attr.x]="node.x" [attr.y]="node.y" [attr.height]="node.height" [attr.width]="node.width"
+    fill="white">
+  </svg:rect>
+  <svg:text class="node-element-text tree-node-element-text" [attr.x]="(node.rank*node.height*2)+20" [attr.y]="node.y+(3*node.height/4)">{{node.text+':'+node.textType}}
+  </svg:text>
+  <svg:image *ngFor="let in of Array(node.rank);let i =index;" [attr.class]="'branch-icon-'+i" xlink:href="assets/images/datamapper/tree-branch-icons/empty.png"
+    [attr.x]="node.height*2*i" [attr.y]="node.y" [attr.height]="node.height" [attr.width]="node.height*2">
+  </svg:image>
+  <svg:image class="node-icon" [attr.xlink:href]="updateIcon()" [attr.x]="node.height*2*node.rank" [attr.y]="node.y" [attr.height]="node.height-6"
+    [attr.width]="node.height-6">
+  </svg:image>
+  <svg:g anchor *ngIf="node.anchor" [anchor]="node.anchor"></svg:g>
+</svg:g>
+
+
+<svg:g *ngIf="node && !node.isSchema" [id]="node.id" class="node-element" [attr.type]="node.type" [attr.x]="node.x" [attr.y]="node.y"
+  [attr.height]="node.height" [attr.width]="node.width" [class.leaf-node]="node.isLeaf">
+  <svg:rect class="node-element-back" [attr.x]="node.x" [attr.y]="node.y" [attr.height]="node.height" [attr.width]="node.width"
+    fill="white" stroke="black">
+  </svg:rect>
+  <svg:text class="node-element-text tree-node-element-text" [attr.x]="(node.x)+12" [attr.y]="node.y+(3*node.height/4)" fill="#989898">{{node.text+':'+node.textType}}
+  </svg:text>
+  <svg:g anchor *ngIf="node.anchor" [anchor]="node.anchor"></svg:g>
+</svg:g>

@@ -1,0 +1,53 @@
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <button pButton type="button" label="New" icon="fa-plus" (click)="displayInputName= true"></button>
+    <button pButton type="button" label="Open" icon="fa-folder-open" (click)="open()" class="ui-button-success"></button>
+
+    <i class="fa fa-bars"></i>
+    <button pButton type="button" label="Save" icon="fa-save" (click)="save()" styleClass="ui-button-warning"></button>
+
+    <i class="fa fa-bars"></i>
+    Diagram Name:{{diagram?.Name}}
+  </div>
+
+  <div class="ui-toolbar-group-right">
+  </div>
+</p-toolbar>
+
+<div>
+  <tool-palette id="tool-palette" class="ui-g-2 ui-md-2  padding"></tool-palette>
+  <div id="canvas-container" class="ui-g-10 ui-md-10 " canvas [diagram]="diagram">
+  </div>
+
+  <button (click)="showMappings()">showMappings</button>
+</div>
+
+
+<p-dialog [(visible)]="displayInputName" modal="true" *ngIf="diagram">
+  <p-header>
+    Input Name
+  </p-header>
+  <div class="ui-inputgroup">
+    <span class="ui-inputgroup-addon">
+      <i class="fa fa-user"></i>
+    </span>
+    <input type="text" [(ngModel)]="diagram.Name" pInputText placeholder="Diagram Name">
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="create()" label="Save"></button>
+    <button type="button" pButton icon="fa-close" (click)="displayInputName=false" label="Cancel"></button>
+  </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="displayList" modal="true">
+  <p-header>
+    List
+  </p-header>
+  <p-table [value]="mapperList$ | async" selectionMode="single" [(selection)]="selectedMapper" [style]="{'width':'300px'}">
+    <p-column field="Name" header="Name" [style]="{'width':'200'}"></p-column>
+  </p-table>
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="select()" label="select"></button>
+    <button type="button" pButton icon="fa-close" (click)="displayList=false" label="Cancel"></button>
+  </p-footer>
+</p-dialog>

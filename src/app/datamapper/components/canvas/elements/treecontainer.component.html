@@ -1,0 +1,26 @@
+<svg:g [id]="model.id" class="tree-dmcontainer dmcontainer dmcontainer-structure" [attr.transform]="'translate('+model.x+','+model.y+')'">
+  <svg:rect class="dmcontainer-title-outline dmcontainer-structure" [id]="model.id + '-title-outline'" [attr.x]="0" [attr.y]="-model.nodeHeight"
+    [attr.height]="model.nodeHeight" [attr.width]="model.containerWidth" [attr.fill]="color" stroke="#000" cursor="move" [contextMenu]="contextMenu">
+  </svg:rect>
+  <svg:text class="dmcontainer-title dmcontainer-structure" x="0" y="-5" font-weight="bold" cursor="move">{{model.title}}
+  </svg:text>
+  <svg:rect class="dmcontainer-outline dmcontainer-structure" [attr.x]="0" [attr.y]="0" [attr.height]="model.nodeHeight*5"
+    [attr.width]="model.containerWidth" fill="white" stroke="#000" cursor="move">
+  </svg:rect>
+  <svg:g *ngIf="model.tree" tree-structure [treeStructure]="model.tree"></svg:g>
+</svg:g>
+
+<context-menu #contextMenu style="pointer-events:all">
+  <ng-template contextMenuItem (execute)="loadFile($event)">
+    <span class="glyphicon glyphicon-list-alt"> Load Schema </span>
+  </ng-template>
+  <!-- <ng-template contextMenuItem (execute)="addRootElement($event)" [visible]="model.tree==null">
+    <span class="glyphicon glyphicon-plus"> Add new root element </span>
+  </ng-template> -->
+  <ng-template contextMenuItem (execute)="clearContainer($event)" [visible]="model.tree!=null">
+    <span class="glyphicon glyphicon-remove-circle"> Clear container </span>
+  </ng-template>
+  <ng-template contextMenuItem (execute)="confirmDeletion($event)">
+    <span class="glyphicon glyphicon-trash"> Delete container </span>
+  </ng-template>
+</context-menu>

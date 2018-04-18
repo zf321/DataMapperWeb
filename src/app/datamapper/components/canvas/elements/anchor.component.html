@@ -1,0 +1,3 @@
+<svg:polygon [id]="anchor.id" class="drag-head" [attr.cx]="anchor.cx" [attr.cy]="anchor.cy" [attr.fill]="anchor.type=='input'?'#019999':'#7c7c7c'"
+  [attr.points]="setPoints(anchor.id,anchor.cx,anchor.cy)" [attr.cursor]="anchor.type=='input'?'pointer':''"></svg:polygon>
+<svg:g *ngIf="tempConnector" connector [connector]="tempConnector"></svg:g>

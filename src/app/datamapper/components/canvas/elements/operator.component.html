@@ -1,0 +1,24 @@
+<svg:g *ngIf="model && model.title!='directOperator'" [id]="model.id" class="model dmcontainer" [attr.transform]="'translate('+model.x+','+model.y+')'">
+  <svg:rect class="dmcontainer-title-outline dmcontainer-structure" x="0" y="0" height="20" [attr.width]="model.width*2" [attr.fill]="color"
+    stroke="black" cursor="move" [contextMenu]="contextMenu">
+  </svg:rect>
+  <svg:text class="dmcontainer-title dmcontainer-structure" [attr.x]="0" [attr.y]="15" font-weight="bold" cursor="move">{{model.title}}
+  </svg:text>
+  <svg:rect class="dmcontainer-outline dmcontainer-structure" x="0" y="20" [attr.height]="model.height*model.max" [attr.width]="model.width*2"
+    fill="none" stroke="black">
+  </svg:rect>
+  <svg:g class="op-inputs">
+    <svg:g *ngFor="let input of model.inputs" node-element [node]="input">
+    </svg:g>
+  </svg:g>
+  <svg:g class="op-outputs">
+    <svg:g *ngFor="let output of model.outputs" node-element [node]="output">
+    </svg:g>
+  </svg:g>
+</svg:g>
+
+<context-menu #contextMenu  style="pointer-events:all">
+  <ng-template contextMenuItem (execute)="confirmDeletion($event)">
+    <span class="glyphicon glyphicon-trash"> Delete container </span>
+  </ng-template>
+</context-menu>

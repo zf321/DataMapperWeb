@@ -1,0 +1,41 @@
+/* body{
+     overflow-x:auto; 
+    overflow-y: auto;
+}
+#layout-content{
+    margin: auto;
+    
+}
+.ui-g{
+    height: auto;
+}
+
+body .ui-fieldset .ui-fieldset-legend{
+    background-color: #efefef;
+}
+.ui-fieldset-toggleable .ui-fieldset-legend a{
+    padding: 3px 5px;
+    color: #333;
+font-size: 14px;
+padding: 5px;
+}
+body .ui-fieldset .ui-fieldset-legend{
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.ui-sidebar-left.ui-sidebar-active, .ui-sidebar-right.ui-sidebar-active{
+    overflow-y: scroll;
+}
+.ui-sidebar-right{
+    width: 30em;
+} */
+body .ui-fieldset .ui-fieldset-legend .ui-fieldset-toggler{
+    padding: .35em;
+height: 1.5em;
+width: 1.5em;
+font-size: 1em;
+}
+
+.ui-sidebar-left.ui-sidebar-active, .ui-sidebar-right.ui-sidebar-active{
+    overflow: auto;
+}

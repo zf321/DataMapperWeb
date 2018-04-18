@@ -1,0 +1,13 @@
+<svg:g [contextMenu]="contextMenu" *ngIf="connector">
+  <svg:line  [id]="connector.id" stroke="black" stroke-width="2" [attr.x1]="connector.x1" [attr.x2]="connector.x2"
+    [attr.y1]="connector.y1" [attr.y2]="connector.y2" [attr.points]="setPoints()"></svg:line>
+  <svg:polyline  class="drag-line drag-line-overlay" stroke="#3399ff" [attr.x1]="connector.x1" [attr.x2]="connector.x2"
+    [attr.y1]="connector.y1" [attr.y2]="connector.y2" [attr.points]="setPoints()" stroke-width="15" fill="none" opacity="0.1"
+    [id]="connector.id+'-overlay'"></svg:polyline>
+</svg:g>
+
+<context-menu #contextMenu style="pointer-events:all">
+  <ng-template contextMenuItem (execute)="removeConnector($event)">
+    <span class="glyphicon glyphicon-trash"> Delete Connector </span>
+  </ng-template>
+</context-menu>

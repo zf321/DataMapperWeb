@@ -1,0 +1,6 @@
+<svg:g class="nested-group" *ngIf="treeStructure">
+  <svg:g node-element  [node]="treeStructure.rootNode">
+  </svg:g>
+  <svg:g tree-structure *ngFor="let n of treeStructure.children |keys" [treeStructure]="n.value">
+  </svg:g>
+</svg:g>
